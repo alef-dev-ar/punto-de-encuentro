@@ -1,0 +1,2673 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Punto de Encuentro</title>
+
+    <link
+        rel="stylesheet"
+        href="estilos.css"
+    >
+</head>
+
+
+<body id="inicio">
+
+
+<!-- =====================================================
+     ICONOS SVG REUTILIZABLES
+===================================================== -->
+
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    style="display:none"
+>
+
+
+    <!-- CORAZÓN -->
+
+    <symbol
+        id="icono-corazon"
+        viewBox="0 0 24 24"
+    >
+        <path
+            d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+    </symbol>
+
+
+    <!-- FLECHA ARRIBA -->
+
+    <symbol
+        id="icono-arriba"
+        viewBox="0 0 24 24"
+    >
+        <path
+            d="M12 19V5M6 11l6-6 6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+    </symbol>
+
+
+    <!-- UBICACIÓN -->
+
+    <symbol
+        id="icono-ubicacion"
+        viewBox="0 0 24 24"
+    >
+        <path
+            d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+
+        <circle
+            cx="12"
+            cy="10"
+            r="2.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+    </symbol>
+
+
+    <!-- CAFÉ -->
+
+    <symbol
+        id="icono-cafe"
+        viewBox="0 0 24 24"
+    >
+        <path
+            d="M4 8h13v5a6 6 0 0 1-6 6H10a6 6 0 0 1-6-6V8Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+
+        <path
+            d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+
+        <path
+            d="M8 3v2M12 3v2"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+        />
+    </symbol>
+
+
+    <!-- CINE -->
+
+    <symbol
+        id="icono-cine"
+        viewBox="0 0 24 24"
+    >
+        <rect
+            x="3"
+            y="6"
+            width="18"
+            height="14"
+            rx="2"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+
+        <path
+            d="M3 10h18M7 6l3 4M13 6l3 4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+    </symbol>
+
+
+    <!-- MÚSICA -->
+
+    <symbol
+        id="icono-musica"
+        viewBox="0 0 24 24"
+    >
+        <path
+            d="M9 18V5l10-2v13"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+        />
+
+        <circle
+            cx="6"
+            cy="18"
+            r="3"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+
+        <circle
+            cx="16"
+            cy="16"
+            r="3"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+    </symbol>
+
+
+    <!-- LIBROS -->
+
+    <symbol
+        id="icono-libros"
+        viewBox="0 0 24 24"
+    >
+        <path
+            d="M4 5.5A3.5 3.5 0 0 1 7.5 2H11v17H7.5A3.5 3.5 0 0 0 4 22V5.5Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+
+        <path
+            d="M20 5.5A3.5 3.5 0 0 0 16.5 2H13v17h3.5A3.5 3.5 0 0 1 20 22V5.5Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+    </symbol>
+
+
+    <!-- NATURALEZA -->
+
+    <symbol
+        id="icono-naturaleza"
+        viewBox="0 0 24 24"
+    >
+        <path
+            d="M20 4C11 4 5 8 5 15c0 3 2 5 5 5 7 0 10-7 10-16Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+
+        <path
+            d="M4 21c3-6 7-9 12-12"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+        />
+    </symbol>
+
+
+    <!-- ARTE -->
+
+    <symbol
+        id="icono-arte"
+        viewBox="0 0 24 24"
+    >
+        <path
+            d="M12 3a9 9 0 1 0 0 18h1.5a2 2 0 0 0 0-4H12a1.5 1.5 0 0 1 0-3h3a6 6 0 0 0 6-6c0-3-4-5-9-5Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+
+        <circle cx="7.5" cy="9" r="1" fill="currentColor"/>
+        <circle cx="11" cy="6.5" r="1" fill="currentColor"/>
+        <circle cx="15" cy="7" r="1" fill="currentColor"/>
+    </symbol>
+
+
+    <!-- TECNOLOGÍA -->
+
+    <symbol
+        id="icono-tecnologia"
+        viewBox="0 0 24 24"
+    >
+        <rect
+            x="4"
+            y="4"
+            width="16"
+            height="12"
+            rx="2"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+
+        <path
+            d="M8 20h8M12 16v4"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+        />
+    </symbol>
+
+
+    <!-- VIAJES -->
+
+    <symbol
+        id="icono-viajes"
+        viewBox="0 0 24 24"
+    >
+        <path
+            d="m21 16-8-4V4a2 2 0 0 0-4 0v8l-6 4v2l6-2v4l-2 2v1l4-1 4 1v-1l-2-2v-4l8 2v-2Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+        />
+    </symbol>
+
+
+    <!-- GASTRONOMÍA -->
+
+    <symbol
+        id="icono-gastronomia"
+        viewBox="0 0 24 24"
+    >
+        <path
+            d="M6 3v7M9 3v7M6 7h3M7.5 10v11"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+        />
+
+        <path
+            d="M15 3v18M15 3c4 2 4 8 0 10"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+        />
+    </symbol>
+
+
+    <!-- DEPORTE -->
+
+    <symbol
+        id="icono-deporte"
+        viewBox="0 0 24 24"
+    >
+        <circle
+            cx="12"
+            cy="12"
+            r="9"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+
+        <path
+            d="M5 7c4 2 10 8 14 10M7 19c1-6 5-11 11-14"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+        />
+    </symbol>
+
+
+    <!-- EDITAR -->
+
+    <symbol
+        id="icono-editar"
+        viewBox="0 0 24 24"
+    >
+        <path
+            d="M12 20h9"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+        />
+
+        <path
+            d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4L16.5 3.5Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linejoin="round"
+        />
+    </symbol>
+
+
+    <!-- PERSONA -->
+
+    <symbol
+        id="icono-persona"
+        viewBox="0 0 24 24"
+    >
+        <circle
+            cx="12"
+            cy="8"
+            r="4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+
+        <path
+            d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+        />
+    </symbol>
+
+
+    <!-- MAPA -->
+
+    <symbol
+        id="icono-mapa"
+        viewBox="0 0 24 24"
+    >
+        <path
+            d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linejoin="round"
+        />
+
+        <path
+            d="M9 3v15M15 6v15"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+    </symbol>
+
+
+    <!-- CANDADO -->
+
+    <symbol
+        id="icono-candado"
+        viewBox="0 0 24 24"
+    >
+        <rect
+            x="4"
+            y="10"
+            width="16"
+            height="11"
+            rx="2"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+        />
+
+        <path
+            d="M8 10V7a4 4 0 0 1 8 0v3"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+        />
+    </symbol>
+
+
+</svg>
+
+
+<!-- =====================================================
+     PORTADA
+===================================================== -->
+
+<section
+    id="pantallaInicio"
+    class="pantalla pantalla-inicio"
+>
+
+
+    <header class="barra-principal">
+
+
+        <a
+            href="#inicio"
+            class="marca enlace-inicio"
+            aria-label="Volver al inicio"
+        >
+
+            <div class="logo-pin">
+
+                <svg>
+                    <use href="#icono-corazon"></use>
+                </svg>
+
+            </div>
+
+
+            <div class="texto-marca">
+
+                <span>
+                    Punto de
+                </span>
+
+                <strong>
+                    Encuentro
+                </strong>
+
+            </div>
+
+        </a>
+
+
+        <nav class="menu-principal">
+
+            <a href="#concepto">
+                Cómo funciona
+            </a>
+
+            <a href="#lugares">
+                Lugares
+            </a>
+
+            <a href="#seguridad">
+                Seguridad
+            </a>
+
+            <button
+                id="abrirLogin"
+                class="boton-menu"
+            >
+                Iniciar sesión
+            </button>
+
+        </nav>
+
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <main class="hero">
+
+
+        <div class="luz luz-uno"></div>
+
+        <div class="luz luz-dos"></div>
+
+
+        <div class="hero-contenido">
+
+
+            <p class="etiqueta">
+                CONOCER ANTES DE VER
+            </p>
+
+
+            <h1>
+    PRIMERO CONECTÁ<br>
+    CON <span>QUIÉN ES.</span>
+               </h1>
+
+            <p class="hero-texto">
+
+                Descubrí personas a través
+                de sus intereses, sus ideas
+                y las cosas que disfrutan.
+
+                La fotografía puede esperar.
+
+            </p>
+
+
+            <div class="acciones-hero">
+
+
+                <button
+                    id="comenzarRegistro"
+                    class="boton-principal"
+                >
+                    Crear mi perfil
+                </button>
+
+
+                <a
+                    href="#concepto"
+                    class="boton-secundario"
+                >
+                    Descubrir cómo funciona
+                </a>
+
+
+            </div>
+
+
+            <p class="nota-hero">
+
+                Los perfiles se exploran
+                sin fotografías.
+
+            </p>
+
+
+        </div>
+
+
+        <!-- PERFIL DE MUESTRA -->
+
+        <div class="hero-demo">
+
+
+            <div class="tarjeta-demo">
+
+
+                <div class="cabecera-demo">
+
+
+                    <div class="avatar-anonimo">
+
+                        <svg>
+                            <use href="#icono-corazon"></use>
+                        </svg>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="perfil-numero">
+                            PERFIL #128
+                        </span>
+
+                        <h3>
+                            Alma · 32
+                        </h3>
+
+                    </div>
+
+
+                </div>
+
+
+                <!--
+                    IMPORTANTE:
+                    NO MOSTRAMOS CIUDAD.
+                    La ubicación forma parte
+                    de los datos privados.
+                -->
+
+
+                <p class="descripcion-demo">
+
+                    “Me gustan las conversaciones
+                    largas, descubrir música nueva
+                    y los lugares tranquilos.”
+
+                </p>
+
+
+                <div class="intereses-demo">
+
+
+                    <div class="interes-mini">
+
+                        <svg>
+                            <use href="#icono-musica"></use>
+                        </svg>
+
+                        <span>Música</span>
+
+                    </div>
+
+
+                    <div class="interes-mini">
+
+                        <svg>
+                            <use href="#icono-cafe"></use>
+                        </svg>
+
+                        <span>Café</span>
+
+                    </div>
+
+
+                    <div class="interes-mini">
+
+                        <svg>
+                            <use href="#icono-libros"></use>
+                        </svg>
+
+                        <span>Lectura</span>
+
+                    </div>
+
+
+                    <div class="interes-mini">
+
+                        <svg>
+                            <use href="#icono-viajes"></use>
+                        </svg>
+
+                        <span>Viajes</span>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="coincidencia">
+
+                    <span>
+                        4 intereses en común
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =================================================
+         LUGARES
+    ================================================== -->
+
+    <section
+        id="lugares"
+        class="seccion-lugares"
+    >
+
+
+        <div class="titulo-seccion titulo-centrado">
+
+
+            <p>
+                PUNTO DE ENCUENTRO
+            </p>
+
+
+            <h2>
+                Si hay conexión, el lugar viene después.
+            </h2>
+
+
+            <span class="subtitulo-lugares">
+
+                Después de una coincidencia,
+                ambos pueden elegir un espacio
+                público para encontrarse.
+
+            </span>
+
+
+        </div>
+
+
+        <div class="galeria-lugares">
+
+
+            <!-- CAFÉ -->
+
+            <article class="lugar lugar-cafe">
+
+                <div class="capa-lugar"></div>
+
+                <div class="contenido-lugar">
+
+                    <div class="icono-lugar">
+
+                        <svg>
+                            <use href="#icono-cafe"></use>
+                        </svg>
+
+                    </div>
+
+                    <span>CAFÉ</span>
+
+                    <h3>
+                        Una conversación tranquila
+                    </h3>
+
+                </div>
+
+            </article>
+
+
+            <!-- CINE -->
+
+            <article class="lugar lugar-cine">
+
+                <div class="capa-lugar"></div>
+
+                <div class="contenido-lugar">
+
+                    <div class="icono-lugar">
+
+                        <svg>
+                            <use href="#icono-cine"></use>
+                        </svg>
+
+                    </div>
+
+                    <span>CINE</span>
+
+                    <h3>
+                        Compartir una historia
+                    </h3>
+
+                </div>
+
+            </article>
+
+
+            <!-- PARQUE -->
+
+            <article class="lugar lugar-parque">
+
+                <div class="capa-lugar"></div>
+
+                <div class="contenido-lugar">
+
+                    <div class="icono-lugar">
+
+                        <svg>
+                            <use href="#icono-naturaleza"></use>
+                        </svg>
+
+                    </div>
+
+                    <span>PARQUE</span>
+
+                    <h3>
+                        Caminar y conversar
+                    </h3>
+
+                </div>
+
+            </article>
+
+
+            <!-- GASTRONOMÍA -->
+
+            <article class="lugar lugar-gastronomia">
+
+                <div class="capa-lugar"></div>
+
+                <div class="contenido-lugar">
+
+                    <div class="icono-lugar">
+
+                        <svg>
+                            <use href="#icono-gastronomia"></use>
+                        </svg>
+
+                    </div>
+
+                    <span>GASTRONOMÍA</span>
+
+                    <h3>
+                        Descubrir algo nuevo
+                    </h3>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =================================================
+         CÓMO FUNCIONA
+    ================================================== -->
+
+    <section
+        id="concepto"
+        class="seccion-concepto"
+    >
+
+
+        <div class="titulo-seccion">
+
+            <p>LA IDEA</p>
+
+            <h2>
+                Otra forma de empezar a conocer.
+            </h2>
+
+        </div>
+
+
+        <div class="pasos">
+
+
+            <article>
+
+                <span class="numero-paso">
+                    01
+                </span>
+
+                <h3>
+                    Contá quién sos
+                </h3>
+
+                <p>
+                    Creá un perfil y elegí
+                    los intereses que realmente
+                    te representan.
+                </p>
+
+            </article>
+
+
+            <article>
+
+                <span class="numero-paso">
+                    02
+                </span>
+
+                <h3>
+                    Descubrí afinidades
+                </h3>
+
+                <p>
+                    Explorá perfiles por intereses
+                    y personalidad, sin fotografías
+                    ni ubicación pública.
+                </p>
+
+            </article>
+
+
+            <article>
+
+                <span class="numero-paso">
+                    03
+                </span>
+
+                <h3>
+                    Coincidencia mutua
+                </h3>
+
+                <p>
+                    La conversación se habilita
+                    cuando ambas personas muestran
+                    interés.
+                </p>
+
+            </article>
+
+
+            <article>
+
+                <span class="numero-paso">
+                    04
+                </span>
+
+                <h3>
+                    Punto de encuentro
+                </h3>
+
+                <p>
+                    Si ambos quieren continuar,
+                    pueden elegir un lugar público
+                    para encontrarse.
+                </p>
+
+            </article>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =================================================
+         SEGURIDAD
+    ================================================== -->
+
+    <section
+        id="seguridad"
+        class="seccion-seguridad"
+    >
+
+
+        <div class="seguridad-contenido">
+
+
+            <span class="linea-decorativa"></span>
+
+
+            <p class="etiqueta">
+                PRIVACIDAD DESDE EL COMIENZO
+            </p>
+
+
+            <h2>
+                Tu ubicación no forma parte
+                de tu presentación.
+            </h2>
+
+
+            <p>
+
+                La ciudad se conserva como
+                información privada de la cuenta.
+
+                No aparece en los perfiles
+                que exploran otras personas.
+
+            </p>
+
+
+            <div class="bloque-punto">
+
+
+                <svg>
+                    <use href="#icono-mapa"></use>
+                </svg>
+
+
+                <div>
+
+                    <strong>
+                        Los mapas son para los lugares,
+                        no para las personas.
+                    </strong>
+
+                    <span>
+                        La ubicación podrá utilizarse
+                        para sugerir cafés, cines,
+                        parques y otros espacios públicos.
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =================================================
+         PIE
+    ================================================== -->
+
+    <footer class="pie-pagina">
+
+
+        <a
+            href="#inicio"
+            class="marca enlace-inicio"
+        >
+
+            <div class="logo-pin logo-pin-pequeno">
+
+                <svg>
+                    <use href="#icono-corazon"></use>
+                </svg>
+
+            </div>
+
+
+            <div class="texto-marca">
+
+                <span>
+                    Punto de
+                </span>
+
+                <strong>
+                    Encuentro
+                </strong>
+
+            </div>
+
+        </a>
+
+
+        <p>
+            Prototipo conceptual.
+        </p>
+
+
+    </footer>
+
+
+</section>
+
+
+<!-- =====================================================
+     REGISTRO
+===================================================== -->
+
+<section
+    id="pantallaRegistro"
+    class="pantalla pantalla-formulario oculto"
+>
+
+
+    <div class="panel-formulario">
+
+
+        <button
+            class="volver"
+            data-volver="inicio"
+        >
+            ← Volver a la portada
+        </button>
+
+
+        <div class="logo-formulario">
+
+            <div class="logo-pin">
+
+                <svg>
+                    <use href="#icono-corazon"></use>
+                </svg>
+
+            </div>
+
+        </div>
+
+
+        <p class="etiqueta">
+            CREÁ TU CUENTA
+        </p>
+
+
+        <h2>
+            Empecemos por vos.
+        </h2>
+
+
+        <p class="texto-formulario">
+
+            Estos datos forman parte
+            de tu cuenta.
+
+        </p>
+
+
+        <form id="formularioRegistro">
+
+
+            <!-- NOMBRE -->
+
+            <label for="nombreRegistro">
+                Nombre o alias
+            </label>
+
+
+            <input
+                id="nombreRegistro"
+                type="text"
+                placeholder="¿Cómo querés que te llamemos?"
+            >
+
+
+            <!-- EDAD -->
+
+            <label for="edadRegistro">
+                Edad
+            </label>
+
+
+            <input
+                id="edadRegistro"
+                type="number"
+                min="18"
+                max="99"
+                placeholder="Edad"
+            >
+
+
+            <!-- CIUDAD PRIVADA -->
+
+            <label for="ciudadRegistro">
+                Ciudad
+            </label>
+
+
+            <input
+                id="ciudadRegistro"
+                type="text"
+                placeholder="Ejemplo: San Luis Capital"
+                autocomplete="off"
+            >
+
+
+            <div class="ayuda-ubicacion">
+
+
+                <svg>
+                    <use href="#icono-candado"></use>
+                </svg>
+
+
+                <p>
+
+                    <strong>
+                        Este dato es privado.
+                    </strong>
+
+                    Indicá solamente tu ciudad.
+                    No ingreses domicilio,
+                    calle ni ubicación exacta.
+
+                </p>
+
+
+            </div>
+
+
+            <!-- CORREO -->
+
+            <label for="correoRegistro">
+                Correo electrónico
+            </label>
+
+
+            <input
+                id="correoRegistro"
+                type="email"
+                placeholder="nombre@correo.com"
+            >
+
+
+            <!-- CONTRASEÑA -->
+
+            <label for="claveRegistro">
+                Contraseña para la demo
+            </label>
+
+
+            <input
+                id="claveRegistro"
+                type="password"
+                placeholder="Mínimo 6 caracteres"
+            >
+
+
+            <p class="aviso-demo">
+
+                No ingreses una contraseña real.
+                El prototipo todavía no posee
+                autenticación segura.
+
+            </p>
+
+
+            <button
+                type="submit"
+                class="boton-principal boton-ancho"
+            >
+                Continuar
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================================
+     CREAR / EDITAR PERFIL
+===================================================== -->
+
+<section
+    id="pantallaPerfil"
+    class="pantalla pantalla-formulario oculto"
+>
+
+
+    <div class="panel-formulario panel-amplio">
+
+
+        <button
+            id="volverDesdeFormularioPerfil"
+            class="volver"
+        >
+            ← Volver
+        </button>
+
+
+        <div class="progreso">
+
+            <span class="activo"></span>
+            <span class="activo"></span>
+            <span></span>
+
+        </div>
+
+
+        <p class="etiqueta">
+            TU PERFIL
+        </p>
+
+
+        <h2 id="tituloFormularioPerfil">
+            Contá un poco sobre vos.
+        </h2>
+
+
+        <p
+            id="textoFormularioPerfil"
+            class="texto-formulario"
+        >
+
+            No necesitás una fotografía.
+            Tus palabras son la primera impresión.
+
+        </p>
+
+
+        <form id="formularioPerfil">
+
+
+            <!-- DESCRIPCIÓN -->
+
+            <label for="descripcionPerfil">
+                Una pequeña presentación
+            </label>
+
+
+            <textarea
+                id="descripcionPerfil"
+                maxlength="220"
+                placeholder="Por ejemplo: disfruto las conversaciones tranquilas, aprender cosas nuevas y descubrir lugares diferentes..."
+            ></textarea>
+
+
+            <div class="contador">
+
+                <span id="contadorDescripcion">
+                    0
+                </span>
+
+                / 220
+
+            </div>
+
+
+            <!-- INTERESES -->
+
+            <label>
+                Elegí tus intereses
+            </label>
+
+
+            <p class="ayuda-intereses">
+                Elegí al menos 3.
+            </p>
+
+
+            <div class="grilla-intereses">
+
+
+                <button
+                    type="button"
+                    class="interes"
+                    data-interes="Música"
+                >
+                    <svg>
+                        <use href="#icono-musica"></use>
+                    </svg>
+
+                    <span>Música</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="interes"
+                    data-interes="Cine"
+                >
+                    <svg>
+                        <use href="#icono-cine"></use>
+                    </svg>
+
+                    <span>Cine</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="interes"
+                    data-interes="Lectura"
+                >
+                    <svg>
+                        <use href="#icono-libros"></use>
+                    </svg>
+
+                    <span>Lectura</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="interes"
+                    data-interes="Café"
+                >
+                    <svg>
+                        <use href="#icono-cafe"></use>
+                    </svg>
+
+                    <span>Café</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="interes"
+                    data-interes="Naturaleza"
+                >
+                    <svg>
+                        <use href="#icono-naturaleza"></use>
+                    </svg>
+
+                    <span>Naturaleza</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="interes"
+                    data-interes="Arte"
+                >
+                    <svg>
+                        <use href="#icono-arte"></use>
+                    </svg>
+
+                    <span>Arte</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="interes"
+                    data-interes="Tecnología"
+                >
+                    <svg>
+                        <use href="#icono-tecnologia"></use>
+                    </svg>
+
+                    <span>Tecnología</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="interes"
+                    data-interes="Viajes"
+                >
+                    <svg>
+                        <use href="#icono-viajes"></use>
+                    </svg>
+
+                    <span>Viajes</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="interes"
+                    data-interes="Gastronomía"
+                >
+                    <svg>
+                        <use href="#icono-gastronomia"></use>
+                    </svg>
+
+                    <span>Gastronomía</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="interes"
+                    data-interes="Deporte"
+                >
+                    <svg>
+                        <use href="#icono-deporte"></use>
+                    </svg>
+
+                    <span>Deporte</span>
+                </button>
+
+
+            </div>
+
+
+            <div class="seleccionados">
+
+                <span id="cantidadIntereses">
+                    0
+                </span>
+
+                intereses seleccionados
+
+            </div>
+
+
+            <button
+                id="botonGuardarPerfil"
+                type="submit"
+                class="boton-principal boton-ancho"
+            >
+                Crear mi perfil
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================================
+     EXPLORAR PERFILES
+===================================================== -->
+
+<section
+    id="pantallaExplorar"
+    class="pantalla pantalla-app oculto"
+>
+
+
+    <header class="barra-app">
+
+
+        <!-- LOGO -->
+
+        <button
+            id="logoVolverInicio"
+            class="marca marca-boton"
+        >
+
+            <div class="logo-pin logo-pin-pequeno">
+
+                <svg>
+                    <use href="#icono-corazon"></use>
+                </svg>
+
+            </div>
+
+
+            <div class="texto-marca">
+
+                <span>
+                    Punto de
+                </span>
+
+                <strong>
+                    Encuentro
+                </strong>
+
+            </div>
+
+        </button>
+
+
+        <!-- NAVEGACIÓN -->
+
+        <nav class="navegacion-app">
+
+
+            <button
+                id="botonExplorar"
+                class="activo"
+            >
+                Explorar
+            </button>
+
+
+            <button id="botonMatches">
+                Coincidencias
+            </button>
+
+
+            <button id="botonMiPerfil">
+                Mi perfil
+            </button>
+
+
+        </nav>
+
+
+        <!-- USUARIO -->
+
+        <div class="usuario-app">
+
+
+            <div
+                id="inicialUsuario"
+                class="inicial-usuario"
+            >
+                A
+            </div>
+
+
+            <span id="nombreUsuario">
+                Usuario
+            </span>
+
+
+        </div>
+
+
+    </header>
+
+
+    <!-- CONTENIDO -->
+
+    <main class="contenido-explorar">
+
+
+        <section class="encabezado-explorar">
+
+
+            <div>
+
+                <p class="etiqueta">
+                    DESCUBRIR
+                </p>
+
+
+                <h1>
+                    Personas con algo en común.
+                </h1>
+
+
+                <p>
+                    Acá primero importan
+                    las afinidades.
+                </p>
+
+            </div>
+
+
+            <div class="contador-afinidades">
+
+                <strong id="totalPerfiles">
+                    3
+                </strong>
+
+                <span>
+                    perfiles para explorar
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             TARJETAS DE PERFILES
+        ================================================== -->
+
+        <section class="grilla-perfiles">
+
+
+            <!-- =========================
+                 ALMA
+            ========================== -->
+
+            <article
+                class="tarjeta-perfil"
+                data-perfil="alma"
+            >
+
+
+                <div class="cabecera-perfil">
+
+
+                    <div class="identidad-anonima">
+
+                        <svg>
+                            <use href="#icono-corazon"></use>
+                        </svg>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="perfil-numero">
+                            PERFIL #128
+                        </span>
+
+                        <h2>
+                            Alma · 32
+                        </h2>
+
+                    </div>
+
+
+                </div>
+
+
+                <blockquote>
+
+                    “Me gustan las conversaciones
+                    largas, descubrir música nueva
+                    y encontrar lugares tranquilos.”
+
+                </blockquote>
+
+
+                <div class="lista-intereses">
+
+
+                    <span data-tipo="Música">
+
+                        <svg>
+                            <use href="#icono-musica"></use>
+                        </svg>
+
+                        Música
+
+                    </span>
+
+
+                    <span data-tipo="Café">
+
+                        <svg>
+                            <use href="#icono-cafe"></use>
+                        </svg>
+
+                        Café
+
+                    </span>
+
+
+                    <span data-tipo="Lectura">
+
+                        <svg>
+                            <use href="#icono-libros"></use>
+                        </svg>
+
+                        Lectura
+
+                    </span>
+
+
+                    <span data-tipo="Viajes">
+
+                        <svg>
+                            <use href="#icono-viajes"></use>
+                        </svg>
+
+                        Viajes
+
+                    </span>
+
+
+                </div>
+
+
+                <div class="afinidad">
+
+                    <span class="punto-afinidad"></span>
+
+                    <strong class="texto-afinidad">
+                        Calculando afinidad...
+                    </strong>
+
+                </div>
+
+
+                <div class="acciones-perfil">
+
+
+                    <button
+                        class="ver-perfil"
+                        data-nombre="Alma"
+                    >
+                        Ver perfil
+                    </button>
+
+
+                    <button
+                        class="me-interesa"
+                        data-nombre="Alma"
+                    >
+
+                        <svg>
+                            <use href="#icono-corazon"></use>
+                        </svg>
+
+                        Me interesa
+
+                    </button>
+
+
+                </div>
+
+
+            </article>
+
+
+            <!-- =========================
+                 LEO
+            ========================== -->
+
+            <article
+                class="tarjeta-perfil"
+                data-perfil="leo"
+            >
+
+
+                <div class="cabecera-perfil">
+
+
+                    <div class="identidad-anonima">
+
+                        <svg>
+                            <use href="#icono-corazon"></use>
+                        </svg>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="perfil-numero">
+                            PERFIL #247
+                        </span>
+
+                        <h2>
+                            Leo · 36
+                        </h2>
+
+                    </div>
+
+
+                </div>
+
+
+                <blockquote>
+
+                    “Disfruto aprender,
+                    la tecnología, el cine
+                    y salir a caminar sin apuro.”
+
+                </blockquote>
+
+
+                <div class="lista-intereses">
+
+
+                    <span data-tipo="Tecnología">
+
+                        <svg>
+                            <use href="#icono-tecnologia"></use>
+                        </svg>
+
+                        Tecnología
+
+                    </span>
+
+
+                    <span data-tipo="Cine">
+
+                        <svg>
+                            <use href="#icono-cine"></use>
+                        </svg>
+
+                        Cine
+
+                    </span>
+
+
+                    <span data-tipo="Naturaleza">
+
+                        <svg>
+                            <use href="#icono-naturaleza"></use>
+                        </svg>
+
+                        Naturaleza
+
+                    </span>
+
+
+                    <span data-tipo="Música">
+
+                        <svg>
+                            <use href="#icono-musica"></use>
+                        </svg>
+
+                        Música
+
+                    </span>
+
+
+                </div>
+
+
+                <div class="afinidad">
+
+                    <span class="punto-afinidad"></span>
+
+                    <strong class="texto-afinidad">
+                        Calculando afinidad...
+                    </strong>
+
+                </div>
+
+
+                <div class="acciones-perfil">
+
+
+                    <button
+                        class="ver-perfil"
+                        data-nombre="Leo"
+                    >
+                        Ver perfil
+                    </button>
+
+
+                    <button
+                        class="me-interesa"
+                        data-nombre="Leo"
+                    >
+
+                        <svg>
+                            <use href="#icono-corazon"></use>
+                        </svg>
+
+                        Me interesa
+
+                    </button>
+
+
+                </div>
+
+
+            </article>
+
+
+            <!-- =========================
+                 SOL
+            ========================== -->
+
+            <article
+                class="tarjeta-perfil"
+                data-perfil="sol"
+            >
+
+
+                <div class="cabecera-perfil">
+
+
+                    <div class="identidad-anonima">
+
+                        <svg>
+                            <use href="#icono-corazon"></use>
+                        </svg>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="perfil-numero">
+                            PERFIL #391
+                        </span>
+
+                        <h2>
+                            Sol · 34
+                        </h2>
+
+                    </div>
+
+
+                </div>
+
+
+                <blockquote>
+
+                    “El arte, los libros,
+                    viajar y probar cosas nuevas
+                    son parte de mi mundo.”
+
+                </blockquote>
+
+
+                <div class="lista-intereses">
+
+
+                    <span data-tipo="Arte">
+
+                        <svg>
+                            <use href="#icono-arte"></use>
+                        </svg>
+
+                        Arte
+
+                    </span>
+
+
+                    <span data-tipo="Lectura">
+
+                        <svg>
+                            <use href="#icono-libros"></use>
+                        </svg>
+
+                        Lectura
+
+                    </span>
+
+
+                    <span data-tipo="Viajes">
+
+                        <svg>
+                            <use href="#icono-viajes"></use>
+                        </svg>
+
+                        Viajes
+
+                    </span>
+
+
+                    <span data-tipo="Gastronomía">
+
+                        <svg>
+                            <use href="#icono-gastronomia"></use>
+                        </svg>
+
+                        Gastronomía
+
+                    </span>
+
+
+                </div>
+
+
+                <div class="afinidad">
+
+                    <span class="punto-afinidad"></span>
+
+                    <strong class="texto-afinidad">
+                        Calculando afinidad...
+                    </strong>
+
+                </div>
+
+
+                <div class="acciones-perfil">
+
+
+                    <button
+                        class="ver-perfil"
+                        data-nombre="Sol"
+                    >
+                        Ver perfil
+                    </button>
+
+
+                    <button
+                        class="me-interesa"
+                        data-nombre="Sol"
+                    >
+
+                        <svg>
+                            <use href="#icono-corazon"></use>
+                        </svg>
+
+                        Me interesa
+
+                    </button>
+
+
+                </div>
+
+
+            </article>
+
+
+        </section>
+
+
+        <!-- PRIVACIDAD -->
+
+        <div class="mensaje-privacidad">
+
+            <svg>
+                <use href="#icono-corazon"></use>
+            </svg>
+
+            <p>
+
+                Las fotografías permanecen ocultas.
+
+                La ciudad y otros datos privados
+                tampoco forman parte
+                del perfil público.
+
+            </p>
+
+        </div>
+
+
+    </main>
+
+
+</section>
+
+
+<!-- =====================================================
+     MI PERFIL
+===================================================== -->
+
+<section
+    id="pantallaMiPerfil"
+    class="pantalla pantalla-app pantalla-mi-perfil oculto"
+>
+
+
+    <!-- BARRA SUPERIOR -->
+
+    <header class="barra-app">
+
+
+        <button
+            id="logoMiPerfilInicio"
+            class="marca marca-boton"
+        >
+
+            <div class="logo-pin logo-pin-pequeno">
+
+                <svg>
+                    <use href="#icono-corazon"></use>
+                </svg>
+
+            </div>
+
+
+            <div class="texto-marca">
+
+                <span>
+                    Punto de
+                </span>
+
+                <strong>
+                    Encuentro
+                </strong>
+
+            </div>
+
+        </button>
+
+
+        <nav class="navegacion-app">
+
+
+            <button id="botonExplorarDesdeMiPerfil">
+                Explorar
+            </button>
+
+
+            <button id="botonMatchesDesdeMiPerfil">
+                Coincidencias
+            </button>
+
+
+            <button class="activo">
+                Mi perfil
+            </button>
+
+
+        </nav>
+
+
+        <div class="usuario-app">
+
+
+            <div
+                id="inicialUsuarioPerfil"
+                class="inicial-usuario"
+            >
+                A
+            </div>
+
+
+            <span id="nombreUsuarioPerfil">
+                Usuario
+            </span>
+
+
+        </div>
+
+
+    </header>
+
+
+    <!-- CONTENIDO -->
+
+    <main class="contenido-mi-perfil">
+
+
+        <!-- CABECERA -->
+
+        <section class="encabezado-mi-perfil">
+
+
+            <div>
+
+
+                <p class="etiqueta">
+                    MI PERFIL
+                </p>
+
+
+                <h1>
+                    Así te ven los demás.
+                </h1>
+
+
+                <p>
+
+                    Tu presentación pública
+                    no muestra fotografía
+                    ni ubicación.
+
+                </p>
+
+
+            </div>
+
+
+            <button
+                id="editarMiPerfil"
+                class="boton-principal"
+            >
+
+                <svg>
+                    <use href="#icono-editar"></use>
+                </svg>
+
+                Editar perfil
+
+            </button>
+
+
+        </section>
+
+
+        <!-- =================================================
+             PARTE PÚBLICA DEL PERFIL
+        ================================================== -->
+
+        <article class="tarjeta-mi-perfil">
+
+
+            <div class="cabecera-mi-perfil">
+
+
+                <div class="identidad-anonima identidad-grande">
+
+                    <svg>
+                        <use href="#icono-corazon"></use>
+                    </svg>
+
+                </div>
+
+
+                <div>
+
+
+                    <span class="perfil-numero">
+                        TU PERFIL
+                    </span>
+
+
+                    <h2>
+
+                        <span id="miPerfilNombre">
+                            Usuario
+                        </span>
+
+                        ·
+
+                        <span id="miPerfilEdad">
+                            --
+                        </span>
+
+                    </h2>
+
+
+                    <p class="estado-sin-foto">
+                        Sin fotografía pública
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- DESCRIPCIÓN -->
+
+            <div class="bloque-descripcion-perfil">
+
+
+                <span class="titulo-dato-perfil">
+                    SOBRE MÍ
+                </span>
+
+
+                <p id="miPerfilDescripcion">
+
+                    Tu presentación aparecerá aquí.
+
+                </p>
+
+
+            </div>
+
+
+            <!-- INTERESES -->
+
+            <div class="bloque-intereses-perfil">
+
+
+                <span class="titulo-dato-perfil">
+                    MIS INTERESES
+                </span>
+
+
+                <div
+                    id="miPerfilIntereses"
+                    class="lista-intereses lista-intereses-propia"
+                >
+
+                    <!--
+                        JavaScript agregará aquí
+                        los intereses seleccionados.
+                    -->
+
+                </div>
+
+
+            </div>
+
+
+            <!-- AVISO FOTO -->
+
+            <div class="estado-privacidad-perfil">
+
+
+                <svg>
+                    <use href="#icono-corazon"></use>
+                </svg>
+
+
+                <div>
+
+                    <strong>
+                        Tu fotografía permanece oculta
+                    </strong>
+
+                    <span>
+
+                        No forma parte de la exploración
+                        inicial de perfiles.
+
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </article>
+
+
+        <!-- =================================================
+             DATOS PRIVADOS
+        ================================================== -->
+
+        <section class="datos-privados">
+
+
+            <div class="cabecera-datos-privados">
+
+
+                <div class="icono-privado">
+
+                    <svg>
+                        <use href="#icono-candado"></use>
+                    </svg>
+
+                </div>
+
+
+                <div>
+
+
+                    <p class="etiqueta">
+                        SOLO VISIBLE PARA VOS
+                    </p>
+
+
+                    <h2>
+                        Datos privados de tu cuenta
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- CIUDAD -->
+
+            <div class="dato-privado">
+
+
+                <div class="dato-privado-icono">
+
+                    <svg>
+                        <use href="#icono-ubicacion"></use>
+                    </svg>
+
+                </div>
+
+
+                <div class="dato-privado-contenido">
+
+
+                    <span>
+                        CIUDAD
+                    </span>
+
+
+                    <strong id="miPerfilCiudad">
+                        Sin configurar
+                    </strong>
+
+
+                    <p>
+
+                        Esta información no aparece
+                        en tu perfil público.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- USO DE LA CIUDAD -->
+
+            <div class="explicacion-ubicacion">
+
+
+                <svg>
+                    <use href="#icono-mapa"></use>
+                </svg>
+
+
+                <p>
+
+                    <strong>
+                        ¿Para qué usamos tu ciudad?
+                    </strong>
+
+                    Cuando exista una coincidencia
+                    y ambos quieran organizar
+                    un Punto de Encuentro,
+                    podremos utilizarla para sugerir
+                    lugares públicos.
+
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             FUTURO PUNTO DE ENCUENTRO
+        ================================================== -->
+
+        <section class="preview-punto-encuentro">
+
+
+            <div class="preview-icono">
+
+                <svg>
+                    <use href="#icono-mapa"></use>
+                </svg>
+
+            </div>
+
+
+            <div>
+
+
+                <p class="etiqueta">
+                    PUNTO DE ENCUENTRO
+                </p>
+
+
+                <h3>
+                    Los mapas mostrarán lugares,
+                    no personas.
+                </h3>
+
+
+                <p>
+
+                    Cafés, cines, parques,
+                    restaurantes y otros espacios
+                    públicos podrán aparecer
+                    como propuestas después
+                    de una coincidencia.
+
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+        <div class="acciones-mi-perfil">
+
+
+            <button
+                id="volverAExplorar"
+                class="boton-secundario"
+            >
+                ← Volver a explorar
+            </button>
+
+
+        </div>
+
+
+    </main>
+
+
+</section>
+
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<div
+    id="modalLogin"
+    class="fondo-modal oculto"
+>
+
+
+    <div class="modal">
+
+
+        <button
+            id="cerrarLogin"
+            class="cerrar-modal"
+            aria-label="Cerrar"
+        >
+            ×
+        </button>
+
+
+        <div class="logo-formulario">
+
+            <div class="logo-pin">
+
+                <svg>
+                    <use href="#icono-corazon"></use>
+                </svg>
+
+            </div>
+
+        </div>
+
+
+        <p class="etiqueta">
+            BIENVENIDO
+        </p>
+
+
+        <h2>
+            Volvé a encontrarte.
+        </h2>
+
+
+        <form id="formularioLogin">
+
+
+            <label for="correoLogin">
+                Correo
+            </label>
+
+
+            <input
+                id="correoLogin"
+                type="email"
+                placeholder="nombre@correo.com"
+            >
+
+
+            <label for="claveLogin">
+                Contraseña
+            </label>
+
+
+            <input
+                id="claveLogin"
+                type="password"
+                placeholder="Tu contraseña"
+            >
+
+
+            <button
+                type="submit"
+                class="boton-principal boton-ancho"
+            >
+                Iniciar sesión
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     BOTÓN FLOTANTE VOLVER AL INICIO
+===================================================== -->
+
+<button
+    id="volverArriba"
+    class="volver-arriba oculto"
+    aria-label="Volver al inicio"
+>
+
+    <svg>
+        <use href="#icono-arriba"></use>
+    </svg>
+
+    <span>
+        Inicio
+    </span>
+
+</button>
+
+
+<!-- =====================================================
+     MENSAJES DEL SISTEMA
+===================================================== -->
+
+<div
+    id="mensajeSistema"
+    class="mensaje-sistema oculto"
+></div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="app.js"></script>
+
+
+</body>
+
+</html>
