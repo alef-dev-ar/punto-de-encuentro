@@ -1,0 +1,11 @@
+{
+  "name": "Punto de Encuentro",
+  "short_name": "Encuentro",
+  "description": "Prototipo de Punto de Encuentro basado en intereses y afinidades.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080914",
+  "theme_color": "#141429",
+  "lang": "es"
+}
