@@ -480,13 +480,11 @@ modalLogin.addEventListener(
 /* =========================================================
    INICIAR SESIÓN DEMO
 ========================================================= */
-
 formularioLogin.addEventListener(
     "submit",
-    function (evento) {
+    async function (evento) {
 
         evento.preventDefault();
-
 
         const correo =
             correoLogin.value.trim();
@@ -494,52 +492,51 @@ formularioLogin.addEventListener(
         const clave =
             claveLogin.value.trim();
 
-
         if (
             correo === "" ||
             clave === ""
         ) {
-
             mostrarMensaje(
                 "Completá correo y contraseña.",
                 "error"
             );
 
             return;
-
         }
 
+        mostrarMensaje(
+            "Iniciando sesión...",
+            "info"
+        );
 
-        /*
-           Como todavía no tenemos servidor
-           ni base de datos, cargamos
-           un perfil ficticio de demostración.
-        */
+        const { data, error } =
+            await supabaseClient.auth.signInWithPassword({
+                email: correo,
+                password: clave
+            });
+
+        if (error) {
+            mostrarMensaje(
+                "No se pudo iniciar sesión. Revisá el correo y la contraseña.",
+                "error"
+            );
+
+            return;
+        }
+
+        const datosUsuario =
+            data.user.user_metadata || {};
 
         usuario = {
-
-            nombre: "Demo",
-
-            edad: 30,
-
-            ciudad: "Ciudad de demostración",
-
-            correo: correo,
-
-            descripcion:
-                "Me gusta descubrir nuevas ideas, conversar y compartir intereses.",
-
-            intereses: [
-                "Música",
-                "Cine",
-                "Café"
-            ]
-
+            nombre: datosUsuario.nombre || "Usuario",
+            edad: datosUsuario.edad || "",
+            ciudad: datosUsuario.ciudad || "",
+            correo: data.user.email,
+            descripcion: "",
+            intereses: []
         };
 
-
         modalLogin.classList.add("oculto");
-
 
         actualizarUsuario();
 
@@ -549,11 +546,10 @@ formularioLogin.addEventListener(
             pantallaExplorar
         );
 
-
         mostrarMensaje(
-            "Sesión de demostración iniciada."
+            "Sesión iniciada correctamente.",
+            "ok"
         );
-
     }
 );
 
