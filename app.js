@@ -563,150 +563,196 @@ formularioLogin.addEventListener(
 ========================================================= */
 
 formularioRegistro.addEventListener(
-    "submit",
-    function (evento) {
+  "submit",
+  async function (evento) {
 
-        evento.preventDefault();
+    evento.preventDefault();
 
+    const nombre =
+      nombreRegistro.value.trim();
 
-        const nombre =
-            nombreRegistro.value.trim();
+    const edad =
+      Number(edadRegistro.value);
 
-        const edad =
-            Number(edadRegistro.value);
+    const ciudad =
+      ciudadRegistro.value.trim();
 
-        const ciudad =
-            ciudadRegistro.value.trim();
+    const correo =
+      correoRegistro.value.trim();
 
-        const correo =
-            correoRegistro.value.trim();
-
-        const clave =
-            claveRegistro.value.trim();
-
-
-        /* NOMBRE */
-
-        if (nombre.length < 2) {
-
-            mostrarMensaje(
-                "Escribí un nombre o alias.",
-                "error"
-            );
-
-            return;
-
-        }
+    const clave =
+      claveRegistro.value.trim();
 
 
-        /* EDAD */
+    /* NOMBRE */
 
-        if (
-            !edad ||
-            edad < 18
-        ) {
+    if (nombre.length < 2) {
 
-            mostrarMensaje(
-                "Este prototipo está planteado para perfiles adultos.",
-                "error"
-            );
+      mostrarMensaje(
+        "Escribí un nombre o alias.",
+        "error"
+      );
 
-            return;
-
-        }
-
-
-        if (edad > 99) {
-
-            mostrarMensaje(
-                "Revisá la edad ingresada.",
-                "error"
-            );
-
-            return;
-
-        }
-
-
-        /* CIUDAD */
-
-        if (ciudad.length < 2) {
-
-            mostrarMensaje(
-                "Indicá solamente tu ciudad.",
-                "error"
-            );
-
-            return;
-
-        }
-
-
-        /* CORREO */
-
-        if (
-            correo === "" ||
-            !correo.includes("@")
-        ) {
-
-            mostrarMensaje(
-                "Ingresá un correo válido.",
-                "error"
-            );
-
-            return;
-
-        }
-
-
-        /* CONTRASEÑA DEMO */
-
-        if (clave.length < 6) {
-
-            mostrarMensaje(
-                "La contraseña de la demo necesita al menos 6 caracteres.",
-                "error"
-            );
-
-            return;
-
-        }
-
-
-        /*
-           Guardamos los datos.
-
-           La ciudad queda en usuario.ciudad,
-           pero NO se muestra públicamente.
-        */
-
-        usuario.nombre = nombre;
-
-        usuario.edad = edad;
-
-        usuario.ciudad = ciudad;
-
-        usuario.correo = correo;
-
-
-        /*
-           Preparamos el formulario
-           para crear el perfil.
-        */
-
-        modoEdicionPerfil = false;
-
-        prepararFormularioCreacion();
-
-
-        mostrarPantalla(
-            pantallaPerfil
-        );
-
+      return;
     }
+
+
+    /* EDAD */
+
+    if (
+      !edad ||
+      edad < 18
+    ) {
+
+      mostrarMensaje(
+        "Este prototipo está planteado para perfiles adultos.",
+        "error"
+      );
+
+      return;
+    }
+
+    if (edad > 99) {
+
+      mostrarMensaje(
+        "Revisá la edad ingresada.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    /* CIUDAD */
+
+    if (ciudad.length < 2) {
+
+      mostrarMensaje(
+        "Indicá solamente tu ciudad.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    /* CORREO */
+
+    if (
+      correo === "" ||
+      !correo.includes("@")
+    ) {
+
+      mostrarMensaje(
+        "Ingresá un correo válido.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    /* CONTRASEÑA */
+
+    if (clave.length < 6) {
+
+      mostrarMensaje(
+        "La contraseña necesita al menos 6 caracteres.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    /* ==========================================
+       REGISTRO REAL EN SUPABASE
+    ========================================== */
+
+    mostrarMensaje(
+      "Creando tu cuenta...",
+      "info"
+    );
+
+    const { data, error } =
+      await supabaseClient.auth.signUp({
+        email: correo,
+        password: clave,
+
+        options: {
+          data: {
+            nombre: nombre,
+            edad: edad,
+            ciudad: ciudad
+          }
+        }
+      });
+
+
+    /* SI SUPABASE DEVUELVE UN ERROR */
+
+    if (error) {
+
+      console.error(
+        "Error de registro:",
+        error
+      );
+
+      mostrarMensaje(
+        "No pudimos crear la cuenta: " + error.message,
+        "error"
+      );
+
+      return;
+    }
+
+
+    /* GUARDAMOS LOS DATOS EN LA APP */
+
+    usuario.nombre = nombre;
+    usuario.edad = edad;
+    usuario.ciudad = ciudad;
+    usuario.correo = correo;
+
+
+    /* LIMPIAMOS EL FORMULARIO */
+
+    formularioRegistro.reset();
+
+
+    /*
+      Si Supabase requiere confirmar el correo,
+      el usuario recibirá el mensaje de confirmación.
+    */
+
+    if (data.user && !data.session) {
+
+      mostrarMensaje(
+        "Cuenta creada. Revisá tu correo para confirmar el registro.",
+        "ok"
+      );
+
+      return;
+    }
+
+
+    /*
+      Si ya existe una sesión,
+      continuamos con la creación del perfil.
+    */
+
+    prepararFormularioCreacion();
+
+    mostrarPantalla(
+      pantallaPerfil
+    );
+
+    mostrarMensaje(
+      "Cuenta creada correctamente.",
+      "ok"
+    );
+  }
 );
-
-
 /* =========================================================
    PREPARAR FORMULARIO PARA CREAR PERFIL
 ========================================================= */
