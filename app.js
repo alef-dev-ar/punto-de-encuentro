@@ -3,6 +3,19 @@
    JAVASCRIPT V2.2
 ========================================================= */
 
+/* ==================================================
+   CONEXIÓN CON SUPABASE
+================================================== */
+
+const SUPABASE_URL = "https://alorabwgdqjticmovcuv.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_zA1jeuE4fYgIKqN5R9lRCA_Kr9bHtUY";
+
+const supabaseClient = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
 
 /* =========================================================
    PANTALLAS
