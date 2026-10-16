@@ -679,13 +679,14 @@ formularioRegistro.addEventListener(
         email: correo,
         password: clave,
 
-        options: {
-          data: {
-            nombre: nombre,
-            edad: edad,
-            ciudad: ciudad
-          }
-        }
+      options: {
+  emailRedirectTo: "https://alef-dev-ar.github.io/punto-de-encuentro/",
+  data: {
+    nombre: nombre,
+    edad: edad,
+    ciudad: ciudad
+  }
+}
       });
 
 
