@@ -524,17 +524,28 @@ formularioLogin.addEventListener(
             return;
         }
 
-        const datosUsuario =
-            data.user.user_metadata || {};
+const { data: perfilGuardado, error: errorPerfil } =
+    await supabaseClient
+        .from("profiles")
+        .select("*")
+        .eq("id", data.user.id)
+        .maybeSingle();
 
-        usuario = {
-            nombre: datosUsuario.nombre || "Usuario",
-            edad: datosUsuario.edad || "",
-            ciudad: datosUsuario.ciudad || "",
-            correo: data.user.email,
-            descripcion: "",
-            intereses: []
-        };
+if (errorPerfil) {
+    console.error("Error al cargar el perfil:", errorPerfil);
+}
+
+const datosUsuario =
+    data.user.user_metadata || {};
+
+usuario = {
+    nombre: perfilGuardado?.nombre || datosUsuario.nombre || "Usuario",
+    edad: perfilGuardado?.edad || datosUsuario.edad || "",
+    ciudad: perfilGuardado?.ciudad || datosUsuario.ciudad || "",
+    correo: data.user.email,
+    descripcion: perfilGuardado?.descripcion || "",
+    intereses: perfilGuardado?.intereses || []
+};
 
         modalLogin.classList.add("oculto");
 
