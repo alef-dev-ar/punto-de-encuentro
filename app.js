@@ -882,7 +882,7 @@ function actualizarContadoresPerfil() {
 
 formularioPerfil.addEventListener(
     "submit",
-    function (evento) {
+   async function (evento) {
 
         evento.preventDefault();
 
@@ -917,6 +917,29 @@ formularioPerfil.addEventListener(
 
         usuario.descripcion =
             descripcion;
+
+      const { data: perfilGuardado, error: errorPerfil } =
+    await supabaseClient
+        .from("profiles")
+        .upsert({
+            id: (await supabaseClient.auth.getUser()).data.user.id,
+            nombre: usuario.nombre,
+            edad: usuario.edad,
+            ciudad: usuario.ciudad,
+            descripcion: descripcion,
+            intereses: usuario.intereses
+        });
+
+if (errorPerfil) {
+    console.error("Error al guardar perfil:", errorPerfil);
+
+    mostrarMensaje(
+        "No pudimos guardar el perfil: " + errorPerfil.message,
+        "error"
+    );
+
+    return;
+}
 
 
         actualizarUsuario();
